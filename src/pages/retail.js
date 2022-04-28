@@ -1,9 +1,13 @@
 import React from 'react';
 import MenuBar2 from '../Menubar2';
-import {styled, Grid, Box, Button} from "@material-ui/core"
+import QRscanner from './Qrscan';
+import {styled, Grid, Box, Button,Typography} from "@material-ui/core"
 import { MdHistory } from 'react-icons/md';
-import { MdLocalShipping} from 'react-icons/md';
-import { FaShoppingCart} from 'react-icons/fa';
+import { MdRedeem } from 'react-icons/md';
+import { FaTablets } from 'react-icons/fa';
+import { MdOutlineQrCodeScanner } from 'react-icons/md';
+import {Link } from "react-router-dom";
+
 
 
 function Retail() {
@@ -12,16 +16,26 @@ function Retail() {
             <div>
                   <MenuBar2/>
                   <Grid>
+                    <Txt><h1>WELCOME</h1></Txt>
                     <Grid container
                         spacing={0}
                         direction="column"
                         alignItems="center"
                         justifyContent="center">
-                      <Sale>
-                            <h1>Sale</h1>
-                      </Sale> 
+                          <Link to="/Scan">                        
+                            <Scan>
+                            <Grid container
+                                    spacing={0}
+                                    direction="column"
+                                    alignItems="center"
+                                    justifyContent="center">
+                                      <MdOutlineQrCodeScanner size={250} />
+                                      <Tt>Scan Lot</Tt>  
+                                    </Grid>
+                            </Scan>
+                       </Link>
                     </Grid>
-                    <Grid container
+                    {/* <Grid container
                         spacing={0}
                         direction="column"
                         alignItems="center"
@@ -31,35 +45,38 @@ function Retail() {
                               <MdHistory size={45}/>
                             </Ibox>
                             <Ibox>
-                              <MdLocalShipping size={45}/>
+                              <MdRedeem size={45}/>
                             </Ibox>
                             <Ibox>
-                              <FaShoppingCart size={45}/>
+                              <FaTablets size={45}/>
                             </Ibox>
                         </IconBox>
-                    </Grid>
+                    </Grid> */}
+                    
                   </Grid>
             </div>
          );
 }
 
-const Sale = styled(Button)
+const Scan = styled(Button)
 ({
     background: 'linear-gradient(315deg, #01224a 0%,  #033840 100% )',
     margin:'45px',
+    borderRadius:'20px',
     color:'white',
     position:'relative',
     flexGrow:'1',
     width:'70vw',
-    height:'75px',
+    // height:'75px',
 });
 
 const IconBox = styled(Box)
 ({
     
-    borderRadius:'15px',
+    borderRadius:'15px', /* added */
     background: 'ivory',
     display: 'flex',
+    // height:'350px',
     width:'70vw',
     flexDirection: 'column',
     padding: '10px 10px',
@@ -78,6 +95,25 @@ const Ibox= styled(Button)
     margin:'2vh 5vw',
     background: 'ivory',
     position:'relative',
-})
+});
+
+const Txt= styled(Typography)
+({
+  color:'black',  
+  fontFamily: 'Poppins',
+  fontWeight: 500,
+  letterSpacing: '0.5px',
+  padding : '5px'
+});
+
+const Tt= styled(Typography)
+({
+      color:'white',  
+      fontFamily: 'Poppins',
+      fontWeight: 500,
+      letterSpacing: '0.5px',
+      padding : '5px',
+      fontSize:'45px',
+});
 
 export default Retail;

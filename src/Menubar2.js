@@ -90,7 +90,7 @@ const Bar = styled(AppBar)
     
     background: '#ff0000',
     position:'sticky',
-    width:'100%vw',
+    width:'100% vw',
     top:'0px',
     minHeight:'70px'
     

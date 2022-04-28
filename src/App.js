@@ -9,22 +9,28 @@ import CreateUser from './pages/UserNewAcc';
 import CreateRetailer from './pages/RetailNewAcc';
 import CreateDrug from './pages/DrugDetail';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import LandPg from './pages/IntialDash';
 
 function App() {
   return (
             <Router>
                   <div>
                   {/* <Login/>; */}
-                  <CreateDrug/>
+                  {/* <CreateDrug/> */}
                   {/* <Mfdr /> */}
                   {/* <Retail /> */}
                   {/* <Scan /> */}       
-                  {/* <Routes>
-                        <Route path='/' element={<Login />} />
-                        <Route path='/Usrdash' element={<User />} />         
+                  <Routes>
+                        <Route path='/' element={<LandPg />} />
+                        <Route path='/ULogin' element={<Login />} />
+                        <Route path='/RLogin' element={<RLogin />} />
+                        <Route path='/CUser' element={<CreateUser />} />
+                        <Route path='/CRetail' element={<CreateRetailer />} />
+                        <Route path='/CDrug' element={<CreateDrug />} />
+                        <Route path='/Udash' element={<User />} />
+                        <Route path='/Rdash' element={<Retail />} />         
                         <Route path='/Scan' element={<Scan/>} />
-                  </Routes>         */}
+                  </Routes>        
 
             </div>
             </Router>

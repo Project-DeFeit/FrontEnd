@@ -1,6 +1,7 @@
 import React from 'react';
 import {styled, Grid, Box, Button, TextField, Typography} from "@material-ui/core"
 import MenuBar from '../Menubar';
+import {Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -39,8 +40,13 @@ function Login() {
                                 direction="column"
                                 alignItems="center"
                                 justifyContent="center">
-                                <Submit><Btxt>Submit</Btxt></Submit>
-                                <NewUser variant="outlined"><Btxt>Create Account</Btxt></NewUser>
+                                <Link to="/Udash">
+                                  <Submit><Btxt>Submit</Btxt></Submit>
+                                </Link>
+                                <Link to="/CUser">
+                                  <NewUser variant="outlined"><Btxt>Create Account</Btxt></NewUser>
+                                </Link>
+                                
                              </Grid>
                          </form>
                         </Grid>
@@ -75,7 +81,7 @@ const Submit = styled(Button)({
     width:'40vw',
     display:'flex',
     flexDirection:'column',
-    minWidth:'150px',
+    minWidth:'250px',
 
   });
   
@@ -115,7 +121,7 @@ const NewUser = styled(Button)({
   flexDirection:'column',
   position:'relative',
   width:'40vw',
-  minWidth:'150px',
+  minWidth:'250px',
 
 });
 

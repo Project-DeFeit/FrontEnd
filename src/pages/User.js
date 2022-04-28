@@ -5,6 +5,7 @@ import {styled, Grid, Box, Button,Typography} from "@material-ui/core"
 import { MdHistory } from 'react-icons/md';
 import { MdRedeem } from 'react-icons/md';
 import { FaTablets } from 'react-icons/fa';
+import { MdOutlineQrCodeScanner } from 'react-icons/md';
 import {Link } from "react-router-dom";
 
 
@@ -23,11 +24,19 @@ function User() {
                         justifyContent="center">
                           <Link to="/Scan">                        
                             <Scan>
-                                 <h2>Scan</h2>
+                            <Grid container
+                                    spacing={0}
+                                    direction="column"
+                                    alignItems="center"
+                                    justifyContent="center">
+                                      <MdOutlineQrCodeScanner size={250} />
+                                      <Tt>Scan</Tt>  
+                                    </Grid>
+                                
                             </Scan>
                        </Link>
                     </Grid>
-                    <Grid container
+                    {/* <Grid container
                         spacing={0}
                         direction="column"
                         alignItems="center"
@@ -43,7 +52,7 @@ function User() {
                               <FaTablets size={45}/>
                             </Ibox>
                         </IconBox>
-                    </Grid>
+                    </Grid> */}
                     
                   </Grid>
             </div>
@@ -53,13 +62,15 @@ function User() {
 const Scan = styled(Button)
 ({
     background: 'linear-gradient(315deg, #01224a 0%,  #033840 100% )',
-    margin:'45px',
+    margin:'20px',
     borderRadius:'20px',
     color:'white',
     position:'relative',
     flexGrow:'1',
     width:'70vw',
-    height:'75px',
+    minWidth:'335px',
+    display:'flex',
+    flexDirection:'column',
 });
 
 const IconBox = styled(Box)
@@ -96,6 +107,18 @@ const Txt= styled(Typography)
   fontWeight: 500,
   letterSpacing: '0.5px',
   padding : '5px'
+});
+
+const Tt= styled(Typography)
+({
+      color:'white',  
+      fontFamily: 'Poppins',
+      fontWeight: 500,
+      letterSpacing: '0.5px',
+      padding : '5px',
+      fontSize:'45px',
+      position:'relative',
+      flexDirection:'column',
 });
 
 export default User;

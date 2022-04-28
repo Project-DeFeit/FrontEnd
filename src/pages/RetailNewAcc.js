@@ -7,7 +7,7 @@ function CreateRetailer() {
     
             <div>
               <MenuBar/>
-              <Txt><h1>Create New User</h1></Txt>
+              <Txt><h1>Create New Retailer</h1></Txt>
                   <Grid container
                         spacing={0}
                         direction="column"

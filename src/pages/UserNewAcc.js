@@ -1,8 +1,43 @@
 import React from 'react';
 import {styled, Grid, Box, Button, TextField, Typography} from "@material-ui/core"
 import MenuBar from '../Menubar';
+import { useState } from "react";
 
 function CreateUser() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    
+  let handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("../data/udata.json", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          mobileNumber: mobileNumber,
+          password: password,
+        }),
+      });
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setName("");
+        setEmail("");
+        setMobileNumber("");
+        setMessage("User created successfully");
+      } else {
+        setMessage("Some error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
   return (
     
             <div>
@@ -19,37 +54,45 @@ function CreateUser() {
                         direction="column"
                         alignItems="center"
                         justifyContent="center"> 
-                         <form >
+                         <form onSubmit={handleSubmit} >
                              <Grid>
                                  <Uid required
                                  label="Name"
                                  type="username"
-                                 variant="filled"/>
+                                 variant="filled"
+                                 value={name}
+                                 onChange={(e) => setName(e.target.value)}/>
                              </Grid>
                              <Grid>
                                  <Uid required
                                  label="Email"
                                  type="username"
-                                 variant="filled"/>
+                                 variant="filled"
+                                 value={email}
+                                 onChange={(e) => setEmail(e.target.value)}/>
                              </Grid>
                              <Grid>
                                  <Uid required
                                  label="Phone No"
                                  type="username"
-                                 variant="filled"/>
+                                 variant="filled"
+                                 value={mobileNumber}
+                                 onChange={(e) => setMobileNumber(e.target.value)}/>
                              </Grid>
                              <Grid>
                                 <Pwd required
                                  label="Password"
                                  type="password"
-                                 variant="filled"/>
+                                 variant="filled"
+                                 value={password}
+                                 onChange={(e) => setPassword(e.target.value)}/>
                              </Grid>
-                             <Grid>
+                             {/* <Grid>
                                 <Pwd required
                                  label="Confirm Password"
                                  type="password"
                                  variant="filled"/>
-                             </Grid>
+                             </Grid> */}
                              
                              <Grid container
                                 spacing={0}
@@ -63,7 +106,8 @@ function CreateUser() {
                         </Grid>
                     </LBox>
                   </Grid>
-            
+                  <div className="message">{message ? <p>{message}</p> : null}</div>
+
             </div>
          );
 }
