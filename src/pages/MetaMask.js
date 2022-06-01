@@ -1,26 +1,25 @@
 import React from 'react';
-import MenuBar2 from '../Menubar2';
+import MenuBar3 from '../Menubar3';
 import {styled, Grid, Box, Typography} from "@material-ui/core";
 import QRscanner from './Qrscan';
 
-
-function Scan() {
-  
+function Metamask() {
   return (
     
             <div>
-                  <MenuBar2/>
+                  <MenuBar3/>
                   <Grid>
                     <Grid container
                         spacing={0}
                         direction="column"
                         alignItems="center"
                         justifyContent="center">
-                          <Txt><h1>Drug Scan</h1></Txt>   
+                          <Txt><h1>Connect to wallet</h1></Txt>   
                         <Cam>
                             <Grid >
-                                  <QRscanner/>
+                                <QRscanner/>
                             </Grid>
+                         
                         </Cam>    
                     </Grid>
                   </Grid>
@@ -36,7 +35,7 @@ const Cam = styled(Box)
     
     borderRadius:'15px',
     background: 'ivory',
-    top:'10px',
+    top:'100px',
     display: 'flex',
     minHeight:'300px',
     minWidth:'250px',
@@ -57,4 +56,4 @@ const Txt= styled(Typography)
   padding : '5px'
 });
 
-export default Scan;
+export default Metamask;

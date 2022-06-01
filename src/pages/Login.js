@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {styled, Grid, Box, Button, TextField, Typography} from "@material-ui/core"
 import MenuBar from '../Menubar';
 import {Link } from "react-router-dom";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+    function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
     
             <div>
@@ -20,18 +30,24 @@ function Login() {
                         direction="column"
                         alignItems="center"
                         justifyContent="center"> 
-                         <form >
+                         <form onSubmit={handleSubmit}>
                              <Grid>
                                  <Uid required
                                  label="Email"
                                  type="username"
-                                 variant="filled"/>
+                                 variant="filled"
+                                 value={email}
+                                 onChange={(e) => setEmail(e.target.value)}
+                                 />
                              </Grid>
                              <Grid>
                                 <Pwd required
                                  label="Password"
                                  type="password"
-                                 variant="filled"/>
+                                 variant="filled"
+                                 value={password}
+                                 onChange={(e) => setPassword(e.target.value)}                                  
+                              />
 
                              </Grid>
                              
@@ -44,7 +60,7 @@ function Login() {
                                   <Submit><Btxt>Submit</Btxt></Submit>
                                 </Link>
                                 <Link to="/CUser">
-                                  <NewUser variant="outlined"><Btxt>Create Account</Btxt></NewUser>
+                                  <NewUser variant="outlined" ><Btxt>Create Account</Btxt></NewUser>
                                 </Link>
                                 
                              </Grid>
@@ -129,7 +145,8 @@ const NewUser = styled(Button)({
 
 const Btxt= styled(Typography)
 ({
-    color:'primary',  
+    color:'secondary',
+    outlineColor:'black' ,  
     fontFamily: 'Poppins',
     fontWeight: 750,
     letterSpacing: '0.5px',

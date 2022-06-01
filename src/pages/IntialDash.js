@@ -4,12 +4,17 @@ import { FaClinicMedical } from 'react-icons/fa';
 import {styled, Grid, Box, Button, Typography} from "@material-ui/core"
 import MenuBar from '../Menubar';
 import {Link } from "react-router-dom";
+import { InjectedConnector } from "@web3-react/injected-connector"
+import { useWeb3React } from '@web3-react/core';
 
 function LandPg() {
+    
   return (
     
             <div>
-                <MenuBar/>
+             
+                    
+            <MenuBar/>
                 <Grid container
                         spacing={0}
                         direction="column"
@@ -17,21 +22,22 @@ function LandPg() {
                         justifyContent="center">
                         
                             <BBox>
-                            <Link to="/ULogin">
-                                <UserB>
+                            <Link to="/ULogin" style={{textDecoration: 'none'}}>
+                                <UserB >
                                     <FaUser size={145} />
                                     <Txt>User Login</Txt>
                                 </UserB>
                             </Link>
-                            <Link to="/RLogin">
+                            <Link to="/RLogin" style={{textDecoration: 'none'}}>
                                 <UserB>
                                     <FaClinicMedical size={145} />
                                     <Txt>Retail Login</Txt>
                                 </UserB>
                             </Link>    
                             </BBox>
-            </Grid>
-            </div>  
+                </Grid>
+                   
+                </div> 
          );
 }
 
@@ -60,7 +66,7 @@ const UserB = styled(Button)({
     height:'180px',
     minWidth:'335px',
     display:'flex',
-    flexDirection:'column',
+    flexDirection:'column'
 
   });
   

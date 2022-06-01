@@ -22,7 +22,7 @@ function User() {
                         direction="column"
                         alignItems="center"
                         justifyContent="center">
-                          <Link to="/Scan">                        
+                          <Link to="/Scan"  style={{textDecoration: 'none'}}>                        
                             <Scan>
                             <Grid container
                                     spacing={0}
@@ -73,21 +73,21 @@ const Scan = styled(Button)
     flexDirection:'column',
 });
 
-const IconBox = styled(Box)
-({
+// const IconBox = styled(Box)
+// ({
     
-    borderRadius:'15px', /* added */
-    background: 'ivory',
-    display: 'flex',
-    // height:'350px',
-    width:'70vw',
-    flexDirection: 'column',
-    padding: '10px 10px',
-    margin:'10px 10px',
-    position:'relative',
-    boxShadow: '0px 7px 29px 0px rgba(100, 100, 111, 0.2)',   
-}
-);
+//     borderRadius:'15px', /* added */
+//     background: 'ivory',
+//     display: 'flex',
+//     // height:'350px',
+//     width:'70vw',
+//     flexDirection: 'column',
+//     padding: '10px 10px',
+//     margin:'10px 10px',
+//     position:'relative',
+//     boxShadow: '0px 7px 29px 0px rgba(100, 100, 111, 0.2)',   
+// }
+// );
 
 const Ibox= styled(Button)
 ({

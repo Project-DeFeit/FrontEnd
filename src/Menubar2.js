@@ -4,6 +4,7 @@ import {styled, Grid,Button, Typography, Box} from "@material-ui/core";
 import { MdOutlineMenu } from 'react-icons/md';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import {Link } from "react-router-dom";
 
 
 function MenuBar2() 
@@ -19,66 +20,19 @@ function MenuBar2()
     return (
             <div>
                  <Bar > 
-                       <Grid>
+                       <Grid container
+                        spacing={0}
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center">
+                
                            <TBox>
                            <Topic>
                                DeFeit
                            </Topic>
                            </TBox>
-                           <MenuButton onClick={handleClick}
-                            sx={{ ml: 2 }}
-                            aria-controls={open ? 'account-menu' : undefined}
-                            aria-haspopup="true"
-                            aria-expanded={open ? 'true' : undefined}>
-                               <MdOutlineMenu size={55}/>
-                        </MenuButton>
+                           
                        </Grid>   
-                       <Menu
-                            anchorEl={anchorEl}
-                            id="account-menu"
-                            open={open}
-                            onClose={handleClose}
-                            onClick={handleClose}
-                            PaperProps={{
-                            elevation: 0,
-                            sx: {
-                                overflow: 'visible',
-                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                                mt: 1.5,
-                                '& .MuiAvatar-root': {
-                                width: 32,
-                                height: 32,
-                                ml: -0.5,
-                                mr: 1,
-                                },
-                                '&:before': {
-                                content: '""',
-                                display: 'block',
-                                position: 'absolute',
-                                top: 0,
-                                right: 14,
-                                width: 10,
-                                height: 10,
-                                bgcolor: 'background.paper',
-                                transform: 'translateY(-50%) rotate(45deg)',
-                                zIndex: 0,
-                                },
-                            },
-                            }}
-                            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                        >
-                                <MenuItem>
-                                   Profile
-                                </MenuItem>
-                                <MenuItem>
-                                   Settings
-                                </MenuItem>
-                                <MenuItem>
-                                   Logout
-                                </MenuItem>
-    
-                        </Menu>
                        
                 </Bar>
             </div>
@@ -99,8 +53,8 @@ const Bar = styled(AppBar)
 const Topic= styled(Typography)
 ({
     color:'white',
-    position:'absolute',
-    left:'43vw',//issues
+    position:'relative',
+    // left:'43vw',//issues
     fontFamily: 'Poppins',
     // align:'center',
     fontWeight: 500,

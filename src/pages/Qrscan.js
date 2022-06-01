@@ -4,7 +4,8 @@ import {styled,Grid,Button, Typography} from "@material-ui/core"
  
 class QRscanner extends Component {
   state = {
-    result: 'No result'
+    result: 'No result',
+    verify: 'Not Verified'
   }
  
   handleScan = data => {
@@ -17,6 +18,7 @@ class QRscanner extends Component {
   handleError = err => {
     console.error(err)
   }
+
   render() {
     return (
       <div>
@@ -30,10 +32,12 @@ class QRscanner extends Component {
                             delay={300}
                             onError={this.handleError}
                             onScan={this.handleScan}
-                            style={{ width: '60vw'}}
+                            style={{ width: '25vw'}}
                            />
-                          <B variant="outlined"><a href={this.state.result}><h2><T>Check Status</T></h2></a></B>
+                           <p>{this.state.result}</p>
+                          <B variant="outlined" onClick={()=>{ alert('Verifed');}}><h2><T>Check Status</T></h2></B>
                         </Grid>
+                        {/* //<a>href={this.state.result}</a> */}
         
       </div>
     )
@@ -44,7 +48,7 @@ const B= styled(Button)
     height: '90px',
     borderRadius:'25px',
     padding:'10px 10px',
-    margin:'2vh 5vw',
+    margin:'1vh 5vw',
     borderWidth:'2px',
     position:'relative',
     background:'linear-gradient(315deg, #01224a 0%,  #033840 100% )',

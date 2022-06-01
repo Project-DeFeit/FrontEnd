@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuBar2 from '../Menubar2';
+import MenuBar3 from '../Menubar3';
 import QRscanner from './Qrscan';
 import {styled, Grid, Box, Button,Typography} from "@material-ui/core"
 import { MdHistory } from 'react-icons/md';
@@ -14,7 +14,7 @@ function Retail() {
   return (
     
             <div>
-                  <MenuBar2/>
+                  <MenuBar3/>
                   <Grid>
                     <Txt><h1>WELCOME</h1></Txt>
                     <Grid container
@@ -22,7 +22,7 @@ function Retail() {
                         direction="column"
                         alignItems="center"
                         justifyContent="center">
-                          <Link to="/Scan">                        
+                          <Link to="/LotScan">                        
                             <Scan>
                             <Grid container
                                     spacing={0}
