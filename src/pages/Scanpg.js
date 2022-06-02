@@ -2,12 +2,17 @@ import React from 'react';
 import MenuBar2 from '../Menubar2';
 import {styled, Grid, Box, Typography} from "@material-ui/core";
 import QRscanner from './Qrscan';
+import {Web3Provider} from "@ethersproject/providers";
+import {Web3ReactProvider} from "@web3-react/core";
 
+const getLibrary = (provider) => {
+  return new Web3Provider(provider);
+};
 
 function Scan() {
   
   return (
-    
+    <Web3ReactProvider getLibrary={getLibrary}>
             <div>
                   <MenuBar2/>
                   <Grid>
@@ -25,6 +30,7 @@ function Scan() {
                     </Grid>
                   </Grid>
             </div>
+            </Web3ReactProvider>
          );
 }
 

@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import QrReader from 'react-qr-reader'
-import {styled,Grid,Button, Typography} from "@material-ui/core"
+import {styled,Grid,Button, Typography} from "@material-ui/core";
+import {InjectedConnector} from "@web3-react/injected-connector";
+// import {ethers} from "ethers";
+import {useWeb3React} from "@web3-react/core";
  
-class QRscanner extends Component {
+// class QRscanner extends Component {
+function QRscanner() {
   state = {
-    result: 'No result',
+    result: "",
     verify: 'Not Verified'
   }
  
@@ -19,30 +23,47 @@ class QRscanner extends Component {
     console.error(err)
   }
 
-  render() {
+  // render() {
+    const presplitValue = this.state.result;
+    const postsplitValue = presplitValue.split(";");
+    const address = postsplitValue[0];
+    const drugIndex = postsplitValue[1];
+    console.log(address);
+    console.log(drugIndex);
+
+    const injected = new InjectedConnector();
+    const { activate, active, account, library: provider } = useWeb3React();
+
+    async function connect() {
+      try {
+        await activate(injected);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     return (
       <div>
-       
+        {active ? (
         <Grid container
-                        spacing={0}
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="center">
-                           <QrReader
-                            delay={300}
-                            onError={this.handleError}
-                            onScan={this.handleScan}
-                            style={{ width: '25vw'}}
-                           />
-                           <p>{this.state.result}</p>
-                          <B variant="outlined" onClick={()=>{ alert('Verifed');}}><h2><T>Check Status</T></h2></B>
-                        </Grid>
-                        {/* //<a>href={this.state.result}</a> */}
-        
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justifyContent="center">
+             <QrReader
+              delay={300}
+              onError={this.handleError}
+              onScan={this.handleScan}
+              style={{ width: '25vw'}}
+             />
+             <p>{this.state.result}</p>
+            <B variant="outlined" onClick={()=>{ alert(this.state.verify);}}><h2><T>Check Status</T></h2></B>
+          </Grid>): (connect)}
+{/* //<a>href={this.state.result}</a> */}
       </div>
     )
   }
-}
+// }
 const B= styled(Button)
 ({
     height: '90px',
@@ -62,4 +83,6 @@ const T= styled(Typography)
   fontSize:'32px',
   padding : '5px'
 });
+
+
 export default QRscanner;

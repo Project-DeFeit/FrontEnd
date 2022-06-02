@@ -1,5 +1,5 @@
 import React from 'react';
-
+import QrGen from './pages/qrgen';
 import Login from './pages/Login';
 import User from './pages/User';
 import Retail from './pages/retail';
@@ -16,16 +16,11 @@ import { useWeb3React } from '@web3-react/core';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandPg from './pages/IntialDash';
 
-
-
 function App() {
-
-   
-    
   return (
             <Router>
-                  <div>
-                            <Routes>
+                  <div>    
+                       {/* { <Routes>
                         <Route path='/' element={<LandPg />} />
                         <Route path='/ULogin' element={<Login />} />
                         <Route path='/RLogin' element={<RLogin />} />
@@ -36,7 +31,12 @@ function App() {
                         <Route path='/Rdash' element={<Retail />} />         
                         <Route path='/Scan' element={<Scan/>} />
                         <Route path='/LotScan' element={<LotScan/>}/>
-                  </Routes>     
+                  </Routes>      } */}
+                   { <Routes>
+                                
+                        <Route path='/' element={<Scan/>} />
+                        
+                  </Routes>      }
             </div>
              </Router>
          );
